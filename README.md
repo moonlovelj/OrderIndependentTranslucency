@@ -37,13 +37,13 @@ Assume **OIT_LAYERS** is **K**, and transparent objects are still sorted from fa
 - To solve this, each pixel can store an **Offset** value in the array
 - This allows **Fragment Data** to be stored **compactly** in the **Fragment Buffer** based on the **Offset**, reducing memory waste
 
-![Demonstration of the Offset Array optimization](https://github.com/moonlovelj/OIT/blob/main/Images/OffsetArray.png)
+![Demonstration of the Offset Array optimization](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/OffsetArray.png)
 
 
 
 ## Fast Prefix Sum Computation
 
-![Demonstration of the prefix sum](https://github.com/moonlovelj/OIT/blob/main/Images/PrefixSum.png)
+![Demonstration of the prefix sum](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/PrefixSum.png)
 
 
 
@@ -53,19 +53,19 @@ Below is a comparison of render quality and performance, where approximately 40 
 
 - **OIT Off, FPS:120, Obvious blending errors occur**
 
-![OIT Off](https://github.com/moonlovelj/OIT/blob/main/Images/OITOff.gif)
+![OIT Off](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/OITOff.gif)
 
 - **UE5 MLAB with 16 sort layers, FPS: 58, Obvious artifact occur**
 
-![UE5 MLAB](https://github.com/moonlovelj/OIT/blob/main/Images/UE5MLAB.gif)
+![UE5 MLAB](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/UE5MLAB.gif)
 
 - **My own OIT with 16 sort layers, FPS: 88, without obvious artifact**
 
-![My own OIT with 16 sort layers](https://github.com/moonlovelj/OIT/blob/main/Images/OIT16.gif)
+![My own OIT with 16 sort layers](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/OIT16.gif)
 
 - **My own OIT with 32 sort layers, FPS: 75, better quality, without obvious artifact**
 
-![My own OIT with 32 sort layers](https://github.com/moonlovelj/OIT/blob/main/Images/OIT32.gif)
+![My own OIT with 32 sort layers](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/OIT32.gif)
 
 As can be seen from the above test that my own OIT solution only exhibits some minor visual artifacts at the edges of the smoke due to excessive layer stacking. However, this scene is intentionally set up with overlapping particle smoke to test performance, which rarely occurs in actual production scenarios.
 
@@ -73,7 +73,7 @@ As can be seen from the above test that my own OIT solution only exhibits some m
 
 ## Demo Video
 
-[![OIT Demo](https://github.com/moonlovelj/OIT/blob/main/Images/OIT.jpg)](https://www.youtube.com/watch?v=Mil08oTn4mU)
+[![OIT Demo](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/OIT.jpg)](https://www.youtube.com/watch?v=Mil08oTn4mU)
 
 
 
