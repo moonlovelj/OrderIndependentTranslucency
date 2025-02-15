@@ -1,6 +1,6 @@
 # OIT
 
-Assume **OIT_LAYERS** is **K**, and transparent objects are still sorted from far to near. 
+Assume **MAX_OIT_LAYERS**(MAX_OIT_LAYERS is the number of layers of semi-transparent pixels that are accurately sorted using OIT) is **K**, and transparent objects are still sorted from far to near. 
 
 ## The rendering process is as follows:
 
@@ -55,19 +55,19 @@ Below is a comparison of render quality and performance, where approximately 40 
 
 ![OIT Off](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/OITOff.gif)
 
-- **UE5 MLAB with 16 sort layers, FPS: 58, Obvious artifact occur**
+- **UE5 MLAB with MAX_OIT_LAYERS=16, FPS: 58, Obvious artifact occur**
 
 ![UE5 MLAB](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/UE5MLAB.gif)
 
-- **My own OIT with 16 sort layers, FPS: 88, without obvious artifact**
+- **My custom OIT with MAX_OIT_LAYERS=16, FPS: 88, without obvious artifact**
 
-![My own OIT with 16 sort layers](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/OIT16.gif)
+![My custom OIT with MAX_OIT_LAYERS=16](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/OIT16.gif)
 
-- **My own OIT with 32 sort layers, FPS: 75, better quality, without obvious artifact**
+- **My custom OIT with MAX_OIT_LAYERS=32, FPS: 75, better quality, without obvious artifact**
 
-![My own OIT with 32 sort layers](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/OIT32.gif)
+![My custom OIT with MAX_OIT_LAYERS=32](https://github.com/moonlovelj/OrderIndependentTranslucency/blob/main/Images/OIT32.gif)
 
-As can be seen from the above test that my own OIT solution only exhibits some minor visual artifacts at the edges of the smoke due to excessive layer stacking. However, this scene is intentionally set up with overlapping particle smoke to test performance, which rarely occurs in actual production scenarios.
+As can be seen from the above test that my custom OIT solution only exhibits some minor visual artifacts at the edges of the smoke due to excessive layer stacking. However, this scene is intentionally set up with overlapping particle smoke to test performance, which rarely occurs in actual production scenarios.
 
 
 
@@ -87,4 +87,4 @@ As can be seen from the above test that my own OIT solution only exhibits some m
 
 ## Conclusion
 
-On platforms that support ROV, this OIT method can achieve accurate OIT for the nearest K layers (K can support up to 32), while blending layers beyond K using conventional distance-based blending. This ensures correct blending for nearby layers without losing distant content. Additionally, when dealing with a large number of transparent layers, this method is significantly more efficient and has better quality than both UE5's MLAB method and the linked list approach. And compared to MLAB, it is compatible with all blending modes.
+On platforms that support ROV, this custom OIT method can achieve accurate OIT for the nearest K layers (K can support up to 32), while blending layers beyond K using conventional distance-based blending. This ensures correct blending for nearby layers without losing distant content. Additionally, when dealing with a large number of transparent layers, this method is significantly more efficient and has better quality than both UE5's MLAB method and the linked list approach. And compared to MLAB, it is compatible with all blending modes.
